@@ -1,0 +1,36 @@
+#modal-root {
+  position: relative;
+  z-index: 100;
+}
+
+.modal {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  bottom: 0%;
+  /* background: #fff; */
+}
+
+.modal .content {
+  width: 30%;
+  background: #a2ecf1;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  overflow: hidden;
+  /* justify-content: center; */
+}
+
+.close-modal {
+  float: right;
+}
+
+label {
+  display: block;
+}
