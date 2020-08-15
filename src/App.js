@@ -26,9 +26,9 @@ class App extends React.Component {
   createBoardHandler = async e => {
     this.state.inputValue === '' && alert('Enter a board name')
     const name = { title: this.state.inputValue }
-    this.setState({ inputValue: '' })
     const boardData = await putData(name)
     navigate(`/board/${boardData.data.board}`)
+    this.setState({ inputValue: '' })
   }
 
   render() {
@@ -58,7 +58,6 @@ class App extends React.Component {
                     placeholder="Enter Board Name"
                     onChange={this.handleChange}
                     value={this.state.inputValue}
-                    required
                   />
                   <button onClick={this.createBoardHandler}>
                     Create Board
