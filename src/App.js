@@ -2,6 +2,8 @@ import React from 'react'
 import Modal from './Modal'
 import './App.css'
 import './Modal.css'
+import { navigate } from '@reach/router'
+import putData from './api'
 
 class App extends React.Component {
   state = {
@@ -21,9 +23,12 @@ class App extends React.Component {
     this.setState({ showModal: false })
   }
 
-  createBoardHandler = e => {
-    console.log('PUT in db')
+  createBoardHandler = async e => {
+    this.state.inputValue === '' && alert('Enter a board name')
+    const name = { title: this.state.inputValue }
     this.setState({ inputValue: '' })
+    const boardData = await putData(name)
+    navigate(`/board/${boardData.data.board}`)
   }
 
   render() {
@@ -53,6 +58,7 @@ class App extends React.Component {
                     placeholder="Enter Board Name"
                     onChange={this.handleChange}
                     value={this.state.inputValue}
+                    required
                   />
                   <button onClick={this.createBoardHandler}>
                     Create Board
