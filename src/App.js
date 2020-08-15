@@ -25,10 +25,12 @@ class App extends React.Component {
             <div className="modal">
               <div className="content">
                 <div className="modal-header">
-                  <p>Modal Children</p>
-                  <span className="close-modal">&times;</span>
+                  <h3>
+                    Get Started <span className="close-modal">&times;</span>
+                  </h3>
                 </div>
                 <div className="modal-content">
+                  <p>Modal Children</p>
                   <button onClick={this.handleHide}>Hide Modal</button>
                   <input type="text" placeholder="Board Name" />
                 </div>
