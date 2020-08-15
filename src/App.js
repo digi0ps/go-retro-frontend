@@ -6,6 +6,11 @@ import './Modal.css'
 class App extends React.Component {
   state = {
     showModal: false,
+    inputValue: '',
+  }
+
+  handleChange = e => {
+    this.setState({ inputValue: e.target.value.trim() })
   }
 
   handleShow = () => {
@@ -15,24 +20,43 @@ class App extends React.Component {
   handleHide = () => {
     this.setState({ showModal: false })
   }
+
+  createBoardHandler = e => {
+    console.log('PUT in db')
+    this.setState({ inputValue: '' })
+  }
+
   render() {
     return (
-      <div className="app">
-        <h2>Click the button to display modal!</h2>
-        <button onClick={this.handleShow}>Show Modal</button>
+      <div>
+        <h1>Go Retro</h1>
+        <button onClick={this.handleShow} disabled>
+          join
+        </button>
+        <button onClick={this.handleShow}>Create</button>
         {this.state.showModal ? (
           <Modal>
             <div className="modal">
               <div className="content">
                 <div className="modal-header">
                   <h3>
-                    Get Started <span className="close-modal">&times;</span>
+                    Get Started{' '}
+                    <span onClick={this.handleHide} className="close-modal">
+                      &times;
+                    </span>
                   </h3>
                 </div>
                 <div className="modal-content">
-                  <p>Modal Children</p>
-                  <button onClick={this.handleHide}>Hide Modal</button>
-                  <input type="text" placeholder="Board Name" />
+                  <h4>Board Name </h4>
+                  <input
+                    type="text"
+                    placeholder="Enter Board Name"
+                    onChange={this.handleChange}
+                    value={this.state.inputValue}
+                  />
+                  <button onClick={this.createBoardHandler}>
+                    Create Board
+                  </button>
                 </div>
               </div>
             </div>

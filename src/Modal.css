@@ -20,17 +20,15 @@
 .modal .content {
   width: 30%;
   background: #a2ecf1;
-  /* display: flex; */
-  /* flex-flow: column wrap; */
-  /* align-items: center; */
-  overflow: hidden;
-  /* justify-content: center; */
+  display: flex;
+  flex-flow: column wrap;
+  padding: 0.5rem 2rem;
+  /* align-items: space-between; */
+
+  justify-content: center;
 }
 
 .modal .content .modal-header span {
   float: right;
-}
-
-label {
-  display: block;
+  cursor: pointer;
 }
