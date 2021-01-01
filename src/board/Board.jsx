@@ -34,3 +34,21 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)
+/*
+const connect=(mapStateToProps,mapStateToProps)=> {
+  return (component)=> {
+    return component(return value from mapStateToProps,return value from mapDispatchToProps)
+    // The return of mapStateToProps and mapStateToProps to the component will be a closure la ?
+
+  }
+  }
+}
+
+const connected=connect(mapStateToProps,mapDispatchToProps)
+connected(component)
+
+or
+
+connect(mapStateToProps,mapDispatchToProps)(component)
+
+*/

@@ -39,7 +39,7 @@ const addColumn = (state, { name }) => {
   }
 }
 
-export default function (state = initialState, action) {
+export default function boardReducer(state = initialState, action) {
   console.log('EXECUTING ACTION', action.type, action.payload)
   switch (action.type) {
     case at.ADD_COLUMN: {
