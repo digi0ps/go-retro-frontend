@@ -6,3 +6,10 @@ export const addColumn = name => ({
     name,
   },
 })
+
+export const deleteColumn = name => ({
+  type: at.DELETE_COLUMN,
+  payload: {
+    name,
+  },
+})

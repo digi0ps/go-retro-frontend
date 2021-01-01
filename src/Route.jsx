@@ -1,13 +1,13 @@
 import React from 'react'
 import App from './App'
 import { Router } from '@reach/router'
-import { Board } from './board/Board'
+import BoardContainer from './board/BoardContainer'
 
 function Route() {
   return (
     <Router>
       <App path="/" />
-      <Board path="board/:boardId" />
+      <BoardContainer path="board/:boardId" />
     </Router>
   )
 }
