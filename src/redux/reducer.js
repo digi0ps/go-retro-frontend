@@ -25,17 +25,33 @@ const initialState = {
   ],
 }
 
+/* action */
+
 const createColumn = name => ({
   id: new Date().getTime(),
   name,
   cards: [],
 })
 
-/* action */
 const addColumn = (state, { name }) => {
   return {
     ...state,
     columns: [...state.columns, createColumn(name)],
+  }
+}
+
+const columnsAfterDeletion = (cols, id) => {
+  const newColumns = cols.filter(col => {
+    return col.id !== id
+  })
+
+  return newColumns
+}
+
+const removeColumn = (state, { id }) => {
+  return {
+    ...state,
+    columns: columnsAfterDeletion([...state.columns], id),
   }
 }
 
@@ -44,6 +60,9 @@ export default function boardReducer(state = initialState, action) {
   switch (action.type) {
     case at.ADD_COLUMN: {
       return addColumn(state, action.payload)
+    }
+    case at.DELETE_COLUMN: {
+      return removeColumn(state, action.payload)
     }
     default: {
       return state

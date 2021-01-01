@@ -22,6 +22,11 @@ export class Board extends React.Component {
     this.setState({ columnName: '' })
   }
 
+  handleDeleteColumnBtn = id => {
+    console.log(id)
+    this.props.deleteColumn(id)
+  }
+
   render() {
     const { columns } = this.props
 
@@ -38,7 +43,10 @@ export class Board extends React.Component {
           />
           <button onClick={this.handleAddColumnBtn}>ADD COLUMN</button>
         </div>
-        <BoardPresenter columns={columns} />
+        <BoardPresenter
+          columns={columns}
+          deleteColumnEvent={this.handleDeleteColumnBtn}
+        />
       </div>
     )
   }
@@ -50,6 +58,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addColumn: actions.addColumn,
+  deleteColumn: actions.deleteColumn,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

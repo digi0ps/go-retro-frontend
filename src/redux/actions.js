@@ -7,9 +7,9 @@ export const addColumn = name => ({
   },
 })
 
-export const deleteColumn = name => ({
+export const deleteColumn = id => ({
   type: at.DELETE_COLUMN,
   payload: {
-    name,
+    id,
   },
 })
