@@ -1,23 +1,25 @@
 import React from 'react'
-import * as at from '../redux/actionTypes'
+// import * as at from '../redux/actionTypes'
 import * as actions from '../redux/actions'
 import { connect } from 'react-redux'
 import BoardPresenter from './BoardPresenter'
 
-class Board extends React.Component {
-  addColumn = () => {
+export class Board extends React.Component {
+  handleAddColumnClick = () => {
     // TODO: Get this value from input and make it dynamic
     this.props.addColumn('Test')
   }
 
   render() {
-    const { columns, addColumn } = this.props
-    console.log('REDUX STATE: ', columns)
+    const { columns } = this.props
+    console.log(columns)
+
+    // console.log('REDUX STATE: ', columns)
     return (
       <div>
         <h1>Board</h1>
         <div className="actions">
-          <button onClick={this.addColumn}>ADD COLUMN</button>
+          <button onClick={this.handleAddColumnClick}>ADD COLUMN</button>
         </div>
         <BoardPresenter columns={columns} />
       </div>
