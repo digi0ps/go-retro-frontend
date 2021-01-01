@@ -13,3 +13,11 @@ export const deleteColumn = id => ({
     id,
   },
 })
+
+export const editColumn = (editedText, id) => ({
+  type: at.UPDATE_COLUMN,
+  payload: {
+    editedText,
+    id,
+  },
+})

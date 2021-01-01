@@ -55,6 +55,25 @@ const removeColumn = (state, { id }) => {
   }
 }
 
+const columnsAfterEdit = (cols, editedText, id) => {
+  const editedColumns = cols.map(col => {
+    if (col.id === id) {
+      col.name = editedText
+    }
+    return col
+  })
+
+  return editedColumns
+}
+
+const editColumn = (state, { editedText, id }) => {
+  console.log(editedText, id)
+  return {
+    ...state,
+    columns: columnsAfterEdit([...state.columns], editedText, id),
+  }
+}
+
 export default function boardReducer(state = initialState, action) {
   console.log('EXECUTING ACTION', action.type, action.payload)
   switch (action.type) {
@@ -63,6 +82,9 @@ export default function boardReducer(state = initialState, action) {
     }
     case at.DELETE_COLUMN: {
       return removeColumn(state, action.payload)
+    }
+    case at.UPDATE_COLUMN: {
+      return editColumn(state, action.payload)
     }
     default: {
       return state
