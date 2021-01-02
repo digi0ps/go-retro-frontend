@@ -1,6 +1,6 @@
 import React from 'react'
-import * as at from '../redux/actionTypes'
-import * as actions from '../redux/actions'
+import * as at from '../../redux/actionTypes'
+import * as actions from '../../redux/actions'
 import { connect } from 'react-redux'
 import BoardPresenter from './BoardPresenter'
 
@@ -49,6 +49,8 @@ export class Board extends React.Component {
           columns={columns}
           deleteColumnEvent={this.handleDeleteColumnBtn}
           updateColumnEvent={this.handleEditColumnBtn}
+          // deleteCardEvent={}
+          // updateCardEvent={}
         />
       </div>
     )
@@ -63,6 +65,9 @@ const mapDispatchToProps = {
   addColumn: actions.addColumn,
   deleteColumn: actions.deleteColumn,
   editColumn: actions.editColumn,
+  addCard: actions.addCards,
+  deleteCard: actions.deleteCards,
+  editCard: actions.editCards,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../card/Card'
 
 class Column extends React.Component {
   state = {
@@ -40,12 +41,7 @@ class Column extends React.Component {
             >
               Save
             </button>
-            <ul>
-              {data.cards.length === 0 ? 'Empty cards' : null}
-              {data.cards.map(card => (
-                <li key={card.id}>{card.content}</li>
-              ))}
-            </ul>
+            <Card cardData={data} />
             <br />
           </div>
         ) : (
@@ -55,12 +51,7 @@ class Column extends React.Component {
               Delete Column
             </button>
             <button onClick={this.handleTextEdit}>Edit Column</button>
-            <ul>
-              {data.cards.length === 0 ? 'Empty cards' : null}
-              {data.cards.map(card => (
-                <li key={card.id}>{card.content}</li>
-              ))}
-            </ul>
+            <Card cardData={data} />
             <br />
           </div>
         )}
