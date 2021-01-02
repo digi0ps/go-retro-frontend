@@ -73,6 +73,27 @@ const editColumn = (state, { editedText, id }) => {
   }
 }
 
+const createCard = cardInp => ({
+  id: new Date().getTime(),
+  content: cardInp,
+})
+
+const addCard = (state, { cardInp, colId }) => {
+  const mutableColumns = [...state.columns]
+  const newCol = mutableColumns.map(col => {
+    if (col.id === colId) {
+      const newCards = [...col.cards, createCard(cardInp)]
+      col.cards = newCards
+    }
+    return col
+  })
+
+  return {
+    ...state,
+    columns: newCol,
+  }
+}
+
 export default function boardReducer(state = initialState, action) {
   console.log('EXECUTING ACTION', action.type, action.payload)
   switch (action.type) {
@@ -86,7 +107,7 @@ export default function boardReducer(state = initialState, action) {
       return editColumn(state, action.payload)
     }
     case at.ADD_CARD: {
-      return state
+      return addCard(state, action.payload)
     }
     case at.DELETE_CARD: {
       return state

@@ -14,10 +14,10 @@ class CardInput extends Component {
     if (cardInp.length !== 0) {
       this.props.addCardAction(cardInp, this.props.colId)
     }
+    this.setState({ inpValue: '' })
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <input
