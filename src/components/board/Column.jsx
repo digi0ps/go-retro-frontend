@@ -16,7 +16,14 @@ class Column extends React.Component {
   }
 
   render() {
-    const { data, deleteColumnEvent, updateColumnEvent } = this.props
+    const {
+      data,
+      deleteColumnEvent,
+      updateColumnEvent,
+      addCardAction,
+      deleteCardAction,
+      editCardAction,
+    } = this.props
     return (
       <div>
         {this.state.editState ? (
@@ -41,7 +48,14 @@ class Column extends React.Component {
             >
               Save
             </button>
-            <Card cardData={data} />
+
+            <Card
+              cardData={data}
+              colId={data.id}
+              addCardAction={addCardAction}
+              deleteCardAction={deleteCardAction}
+              editCardAction={editCardAction}
+            />
             <br />
           </div>
         ) : (
@@ -51,7 +65,13 @@ class Column extends React.Component {
               Delete Column
             </button>
             <button onClick={this.handleTextEdit}>Edit Column</button>
-            <Card cardData={data} />
+            <Card
+              cardData={data}
+              colId={data.id}
+              addCardAction={addCardAction}
+              deleteCardAction={deleteCardAction}
+              editCardAction={editCardAction}
+            />
             <br />
           </div>
         )}

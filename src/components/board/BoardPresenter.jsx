@@ -3,7 +3,14 @@ import Column from './Column'
 
 class Presenter extends React.Component {
   render() {
-    const { columns, deleteColumnEvent, updateColumnEvent } = this.props
+    const {
+      columns,
+      deleteColumnEvent,
+      updateColumnEvent,
+      addCardAction,
+      deleteCardAction,
+      editCardAction,
+    } = this.props
     if (columns === undefined) {
       return ''
     }
@@ -13,6 +20,9 @@ class Presenter extends React.Component {
           data={col}
           deleteColumnEvent={deleteColumnEvent}
           updateColumnEvent={updateColumnEvent}
+          addCardAction={addCardAction}
+          deleteCardAction={deleteCardAction}
+          editCardAction={editCardAction}
         />
 
         <br />

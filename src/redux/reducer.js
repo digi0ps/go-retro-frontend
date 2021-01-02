@@ -67,7 +67,6 @@ const columnsAfterEdit = (cols, editedText, id) => {
 }
 
 const editColumn = (state, { editedText, id }) => {
-  console.log(editedText, id)
   return {
     ...state,
     columns: columnsAfterEdit([...state.columns], editedText, id),
@@ -85,6 +84,15 @@ export default function boardReducer(state = initialState, action) {
     }
     case at.UPDATE_COLUMN: {
       return editColumn(state, action.payload)
+    }
+    case at.ADD_CARD: {
+      return state
+    }
+    case at.DELETE_CARD: {
+      return state
+    }
+    case at.UPDATE_CARD: {
+      return state
     }
     default: {
       return state

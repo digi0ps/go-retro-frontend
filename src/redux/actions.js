@@ -26,11 +26,11 @@ export const editColumn = (editedText, id) => ({
 
 /* card actions */
 
-export const addCards = (colId, cardId) => ({
+export const addCards = (cardInp, colId) => ({
   type: at.ADD_CARD,
   payload: {
+    cardInp,
     colId,
-    cardId,
   },
 })
 
