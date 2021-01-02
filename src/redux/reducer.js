@@ -94,6 +94,32 @@ const addCard = (state, { cardInp, colId }) => {
   }
 }
 
+const deleteCards = (cards, cardId) => {
+  const mutableCards = [...cards]
+
+  const filteredCards = mutableCards.filter(card => {
+    return card.id !== cardId
+  })
+  return filteredCards
+}
+
+const cardAfterDeletion = (state, { colId, cardId }) => {
+  const mutableState = [...state.columns]
+  const newColumns = mutableState.map(col => {
+    if (col.id === colId) {
+      const newCards = deleteCards(col.cards, cardId)
+      console.log(newCards)
+      col.cards = newCards
+    }
+    return col
+  })
+
+  return {
+    ...state,
+    columns: newColumns,
+  }
+}
+
 export default function boardReducer(state = initialState, action) {
   console.log('EXECUTING ACTION', action.type, action.payload)
   switch (action.type) {
@@ -110,7 +136,7 @@ export default function boardReducer(state = initialState, action) {
       return addCard(state, action.payload)
     }
     case at.DELETE_CARD: {
-      return state
+      return cardAfterDeletion(state, action.payload)
     }
     case at.UPDATE_CARD: {
       return state
