@@ -4,6 +4,8 @@ import * as actions from '../../redux/actions'
 import { connect } from 'react-redux'
 import BoardPresenter from './BoardPresenter'
 
+import './board.css'
+
 export class Board extends React.Component {
   state = {
     columnName: '',
@@ -46,14 +48,16 @@ export class Board extends React.Component {
           />
           <button onClick={this.handleAddColumnBtn}>ADD COLUMN</button>
         </div>
-        <BoardPresenter
-          columns={columns}
-          deleteColumnEvent={this.handleDeleteColumnBtn}
-          updateColumnEvent={this.handleEditColumnBtn}
-          addCardAction={addCard}
-          deleteCardAction={deleteCard}
-          editCardAction={editCard}
-        />
+        <div className="board">
+          <BoardPresenter
+            columns={columns}
+            deleteColumnEvent={this.handleDeleteColumnBtn}
+            updateColumnEvent={this.handleEditColumnBtn}
+            addCardAction={addCard}
+            deleteCardAction={deleteCard}
+            editCardAction={editCard}
+          />
+        </div>
       </div>
     )
   }

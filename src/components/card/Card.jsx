@@ -10,24 +10,18 @@ class Card extends React.Component {
   render() {
     const { cardData, colId, addCardAction, editCardAction } = this.props
     return (
-      <div style={{ border: 'solid 1px teal' }}>
-        <CardInput colId={colId} addCardAction={addCardAction} />
-
-        <div>
-          <ul>
-            {cardData.cards.length === 0 ? 'Empty cards' : null}
-            {cardData.cards.map(card => (
-              <CardUI
-                key={card.id}
-                cardData={card}
-                colId={colId}
-                deleteCardEvent={this.handleDeleteCardBtn}
-                editCardEvent={editCardAction}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
+      <>
+        {cardData.cards.length === 0 ? 'Start adding some cards' : null}
+        {cardData.cards.map(card => (
+          <CardUI
+            key={card.id}
+            cardData={card}
+            colId={colId}
+            deleteCardEvent={this.handleDeleteCardBtn}
+            editCardEvent={editCardAction}
+          />
+        ))}
+      </>
     )
   }
 }

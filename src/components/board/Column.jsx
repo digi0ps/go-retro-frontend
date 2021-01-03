@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../card/Card'
+import CardInput from '../card/CardInput'
 
 class Column extends React.Component {
   state = {
@@ -25,7 +26,7 @@ class Column extends React.Component {
       editCardAction,
     } = this.props
     return (
-      <div>
+      <div className="column">
         {this.state.editState ? (
           <div key={data.id}>
             <input
@@ -65,10 +66,12 @@ class Column extends React.Component {
               Delete Column
             </button>
             <button onClick={this.handleTextEdit}>Edit Column</button>
+
+            <CardInput colId={data.id} addCardAction={addCardAction} />
+
             <Card
               cardData={data}
               colId={data.id}
-              addCardAction={addCardAction}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
             />

@@ -13,10 +13,11 @@ class CardUI extends React.Component {
   handleChange = e => {
     this.setState({ editedText: e.target.value })
   }
+
   render() {
     const { cardData, deleteCardEvent, editCardEvent, colId } = this.props
     return (
-      <div key={cardData.id}>
+      <div className="card" draggable key={cardData.id}>
         {this.state.editState ? (
           <div>
             {' '}
@@ -25,12 +26,6 @@ class CardUI extends React.Component {
               value={this.state.editedText}
               onChange={this.handleChange}
             />
-            <button onClick={() => deleteCardEvent(cardData.id)}>
-              Delete Card
-            </button>
-            <button onClick={() => this.handleEditCardBtn(cardData.id)}>
-              Edit Card
-            </button>
             <button
               onClick={() => {
                 if (this.state.editedText.length === 0) {
