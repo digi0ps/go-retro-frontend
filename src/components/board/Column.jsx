@@ -16,6 +16,20 @@ class Column extends React.Component {
     this.setState({ editedText: e.target.value })
   }
 
+  handleOnDragEnd = e => {
+    e.persist()
+    console.log(e)
+    const { colId, cardId, cardContent } = e.target.dataset
+    // TODO: we are still getting the previous column id, need to find out how to get the dropped column id
+    const currentColId = this.props.data.id
+    console.log(
+      `Move card ${cardId} from column ${colId} to column ${currentColId}`,
+    )
+
+    // TODO: This is temporary for testing purposes. remove and implement swap
+    this.props.addCardAction(cardContent, currentColId)
+  }
+
   render() {
     const {
       data,
@@ -26,7 +40,7 @@ class Column extends React.Component {
       editCardAction,
     } = this.props
     return (
-      <div className="column">
+      <div className="column" onDragEnd={this.handleOnDragEnd}>
         {this.state.editState ? (
           <div key={data.id}>
             <input
@@ -53,7 +67,6 @@ class Column extends React.Component {
             <Card
               cardData={data}
               colId={data.id}
-              addCardAction={addCardAction}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
             />

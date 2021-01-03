@@ -1,5 +1,4 @@
 import React from 'react'
-import CardInput from './CardInput'
 import CardUI from './CardUI'
 
 class Card extends React.Component {
@@ -8,7 +7,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const { cardData, colId, addCardAction, editCardAction } = this.props
+    const { cardData, colId, editCardAction } = this.props
     return (
       <>
         {cardData.cards.length === 0 ? 'Start adding some cards' : null}

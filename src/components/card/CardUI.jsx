@@ -17,7 +17,14 @@ class CardUI extends React.Component {
   render() {
     const { cardData, deleteCardEvent, editCardEvent, colId } = this.props
     return (
-      <div className="card" draggable key={cardData.id}>
+      <div
+        className="card"
+        draggable
+        key={cardData.id}
+        data-card-id={cardData.id}
+        data-col-id={colId}
+        data-card-content={cardData.content}
+      >
         {this.state.editState ? (
           <div>
             {' '}
