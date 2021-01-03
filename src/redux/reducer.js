@@ -108,7 +108,6 @@ const cardAfterDeletion = (state, { colId, cardId }) => {
   const newColumns = mutableState.map(col => {
     if (col.id === colId) {
       const newCards = deleteCards(col.cards, cardId)
-      console.log(newCards)
       col.cards = newCards
     }
     return col
@@ -117,6 +116,36 @@ const cardAfterDeletion = (state, { colId, cardId }) => {
   return {
     ...state,
     columns: newColumns,
+  }
+}
+
+const editCards = (cards, cardId, editedCard) => {
+  const mutableCards = [...cards]
+  const editedCards = mutableCards.map(card => {
+    if (card.id === cardId) {
+      card.content = editedCard
+    }
+    return card
+  })
+
+  return editedCards
+}
+
+const cardAfterEdit = (state, { colId, cardId, editedCard }) => {
+  const mutableState = [...state.columns]
+  const newCol = mutableState.map(col => {
+    if (col.id === colId) {
+      const newCards = editCards(col.cards, cardId, editedCard)
+      console.log(newCards)
+      col.cards = newCards
+      console.log(col.cards)
+    }
+    return col
+  })
+
+  return {
+    ...state,
+    columns: newCol,
   }
 }
 
@@ -139,7 +168,7 @@ export default function boardReducer(state = initialState, action) {
       return cardAfterDeletion(state, action.payload)
     }
     case at.UPDATE_CARD: {
-      return state
+      return cardAfterEdit(state, action.payload)
     }
     default: {
       return state

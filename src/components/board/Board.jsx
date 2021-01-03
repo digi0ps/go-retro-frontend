@@ -1,5 +1,5 @@
 import React from 'react'
-import * as at from '../../redux/actionTypes'
+
 import * as actions from '../../redux/actions'
 import { connect } from 'react-redux'
 import BoardPresenter from './BoardPresenter'
@@ -12,23 +12,6 @@ export class Board extends React.Component {
   handleColumnInput = e => {
     this.setState({ columnName: e.target.value })
   }
-
-  // handleCardInput = (e, id) => {
-  //   this.setState({ colID: id })
-  //   if (e.target.name === this.state.colID) {
-  //     console.log('inside if', id)
-  //     this.setState({ cardContent: e.target.value })
-  //   }
-  // }
-
-  // handleAddCarnBtn = colId => {
-  //   const cardContent = this.state.cardContent.trim()
-  //   if (colId === this.state.colID) {
-  //     console.log(cardContent)
-  //   }
-
-  //   this.setState({ cardContent: '' })
-  // }
 
   handleAddColumnBtn = () => {
     const columnName = this.state.columnName.trim()
