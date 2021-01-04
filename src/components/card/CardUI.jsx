@@ -13,9 +13,6 @@ class CardUI extends React.Component {
   handleChange = e => {
     this.setState({ editedText: e.target.value })
   }
-  // handleDragStart = (e, cardDataId, colId, cardDataContent) => {
-  //   console.log(e, cardDataId, colId, cardDataContent)
-  // }
 
   render() {
     const {

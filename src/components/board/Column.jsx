@@ -30,18 +30,21 @@ class Column extends React.Component {
     this.props.addCardAction(cardContent, currentColId)
   }
 
-  // handleDrop = e => {
-  //   e.persist()
-  //   console.log(e.target)
-  // }
   handleDragStart = (e, cardDataId, colId, cardDataContent) => {
     e.preventDefault()
+
     console.log(e, cardDataId, colId, cardDataContent)
   }
 
   handleDragOver = e => {
     e.preventDefault()
+
     console.log(e)
+  }
+
+  handleDrop = e => {
+    e.preventDefault()
+    console.log(e.target)
   }
 
   render() {
@@ -56,8 +59,9 @@ class Column extends React.Component {
     return (
       <div
         className="column"
-        onDragStart={this.handleOnDragEnd}
-        // onDrop={this.handleDrop}
+        onDragStart={this.handleDragStart}
+        onDragEnd={this.handleOnDragEnd}
+        onDrop={this.handleDrop}
         onDragOver={this.handleDragOver}
       >
         {this.state.editState ? (
@@ -88,7 +92,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStartEvent={this.handleOnDragStart}
+              dragStartEvent={this.handleDragStart}
             />
             <br />
           </div>
@@ -107,7 +111,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStartEvent={this.handleOnDragStart}
+              dragStartEvent={this.handleDragStart}
             />
             <br />
           </div>
