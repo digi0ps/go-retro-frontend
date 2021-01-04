@@ -7,7 +7,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const { cardData, colId, editCardAction } = this.props
+    const { cardData, colId, editCardAction, dragStartEvent } = this.props
     return (
       <>
         {cardData.cards.length === 0 ? 'Start adding some cards' : null}
@@ -18,6 +18,7 @@ class Card extends React.Component {
             colId={colId}
             deleteCardEvent={this.handleDeleteCardBtn}
             editCardEvent={editCardAction}
+            dragStartEvent={dragStartEvent}
           />
         ))}
       </>
