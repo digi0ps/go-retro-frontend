@@ -16,36 +16,33 @@ class Column extends React.Component {
     this.setState({ editedText: e.target.value })
   }
 
+  handleOnDragStart = (e, cardId, colId) => {
+    console.log(cardId, colId)
+    e.dataTransfer.setData('colId', colId)
+    e.dataTransfer.setData('cardId', cardId)
+  }
+
   handleOnDragEnd = e => {
-    e.persist()
-    console.log(e)
-    const { colId, cardId, cardContent } = e.target.dataset
-    // TODO: we are still getting the previous column id, need to find out how to get the dropped column id
+    e.preventDefault()
+  }
+
+  handleOnDrop = e => {
+    e.preventDefault()
+    // const { colId, cardId, cardContent } = e.target.dataset
     const currentColId = this.props.data.id
     console.log(
-      `Move card ${cardId} from column ${colId} to column ${currentColId}`,
+      `Move card ${e.dataTransfer.getData(
+        'cardId',
+      )} from column ${e.dataTransfer.getData(
+        'colId',
+      )} to column ${currentColId}`,
     )
-
-    // TODO: This is temporary for testing purposes. remove and implement swap
-    this.props.addCardAction(cardContent, currentColId)
   }
 
-  handleDragStart = (e, cardDataId, colId, cardDataContent) => {
-    e.preventDefault()
-
-    console.log(e, cardDataId, colId, cardDataContent)
-  }
-
-  handleDragOver = e => {
-    e.preventDefault()
-
-    console.log(e)
-  }
-
-  handleDrop = e => {
-    e.preventDefault()
-    console.log(e.target)
-  }
+  // handleDragOver = e => {
+  //   e.preventDefault()
+  //   e.dataTransfer.setData('dropId', e.target.value)
+  // }
 
   render() {
     const {
@@ -59,10 +56,11 @@ class Column extends React.Component {
     return (
       <div
         className="column"
-        onDragStart={this.handleDragStart}
+        onDragOver={e => e.preventDefault()}
+        onDrop={e => this.handleOnDrop(e)}
         onDragEnd={this.handleOnDragEnd}
-        onDrop={this.handleDrop}
-        onDragOver={this.handleDragOver}
+        onDragEnter={e => e.preventDefault()}
+        onDragLeave={e => e.preventDefault()}
       >
         {this.state.editState ? (
           <div key={data.id}>
@@ -92,7 +90,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStartEvent={this.handleDragStart}
+              dragStart={this.handleOnDragStart}
             />
             <br />
           </div>
@@ -111,7 +109,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStartEvent={this.handleDragStart}
+              dragStart={this.handleOnDragStart}
             />
             <br />
           </div>

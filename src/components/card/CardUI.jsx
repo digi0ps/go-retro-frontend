@@ -20,16 +20,16 @@ class CardUI extends React.Component {
       deleteCardEvent,
       editCardEvent,
       colId,
-      dragStartEvent,
+      dragStart,
     } = this.props
     return (
       <div
         className="card"
         draggable
-        onDragStart={e => {
-          dragStartEvent(e, cardData.id, colId, cardData.content)
-        }}
         key={cardData.id}
+        onDragStart={e => {
+          dragStart(e, cardData.id, colId)
+        }}
         data-card-id={cardData.id}
         data-col-id={colId}
         data-card-content={cardData.content}
@@ -59,9 +59,6 @@ class CardUI extends React.Component {
           <div
             className="card"
             draggable
-            onDragStart={e => {
-              dragStartEvent(e, cardData.id, colId, cardData.content)
-            }}
             key={cardData.id}
             data-card-id={cardData.id}
             data-col-id={colId}
