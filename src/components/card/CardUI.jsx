@@ -62,7 +62,7 @@ class CardUI extends React.Component {
             data-card-content={cardData.content}
           >
             <li>{cardData.content}</li>
-            // CURRYING called here
+
             <button onClick={deleteCardEvent(colId, cardData.id)}>
               Delete Card
             </button>

@@ -25,18 +25,11 @@ class Column extends React.Component {
     // const { colId, cardId, cardContent } = e.target.dataset
     const currentColId = this.props.data.id
     console.log(
-      `Move card ${e.dataTransfer.getData(
-        'cardId',
-      )} from column ${e.dataTransfer.getData(
+      `Move  ${e.dataTransfer.getData('cardId')} from  ${e.dataTransfer.getData(
         'colId',
-      )} to column ${currentColId}`,
+      )} to  ${currentColId}`,
     )
   }
-
-  // handleDragOver = e => {
-  //   e.preventDefault()
-  //   e.dataTransfer.setData('dropId', e.target.value)
-  // }
 
   render() {
     const {

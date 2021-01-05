@@ -9,7 +9,6 @@ class Card extends React.Component {
         {cardData.cards.length === 0 ? 'Start adding some cards' : null}
         {cardData.cards.map(card => (
           <CardUI
-            // draggable
             key={card.id}
             cardData={card}
             colId={colId}

@@ -31,9 +31,10 @@ export class Board extends React.Component {
     this.props.editColumn(editedColumnName, id)
   }
 
-  // CURRYING 
-  handleDeleteCard = (colId, cardId) => s() =>
-    this.props.deleteCard(colId, cardId)
+  // CURRYING
+  handleDeleteCard = (colId, cardId) => () => {
+    return this.props.deleteCard(colId, cardId)
+  }
 
   render() {
     const { columns, addCard, editCard } = this.props
@@ -47,7 +48,6 @@ export class Board extends React.Component {
             type="text"
             value={this.state.columnName}
             placeholder="Enter column name"
-            // name="columnName"
             onChange={this.handleColumnInput}
           />
           <button onClick={this.handleAddColumnBtn}>ADD COLUMN</button>
