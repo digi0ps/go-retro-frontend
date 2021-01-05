@@ -16,12 +16,6 @@ class Column extends React.Component {
     this.setState({ editedText: e.target.value })
   }
 
-  handleOnDragStart = (e, cardId, colId) => {
-    console.log(cardId, colId)
-    e.dataTransfer.setData('colId', colId)
-    e.dataTransfer.setData('cardId', cardId)
-  }
-
   handleOnDragEnd = e => {
     e.preventDefault()
   }
@@ -90,7 +84,6 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStart={this.handleOnDragStart}
             />
             <br />
           </div>
@@ -109,7 +102,6 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
-              dragStart={this.handleOnDragStart}
             />
             <br />
           </div>

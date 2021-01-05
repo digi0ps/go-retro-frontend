@@ -2,14 +2,8 @@ import React from 'react'
 import CardUI from './CardUI'
 
 class Card extends React.Component {
-  handleDeleteCardBtn = id => {
-    this.props.deleteCardAction(this.props.colId, id)
-  }
-
-  handleDragStart = e => {}
-
   render() {
-    const { cardData, colId, editCardAction, dragStart } = this.props
+    const { cardData, colId, editCardAction, deleteCardAction } = this.props
     return (
       <>
         {cardData.cards.length === 0 ? 'Start adding some cards' : null}
@@ -19,9 +13,8 @@ class Card extends React.Component {
             key={card.id}
             cardData={card}
             colId={colId}
-            deleteCardEvent={this.handleDeleteCardBtn}
+            deleteCardEvent={deleteCardAction}
             editCardEvent={editCardAction}
-            dragStart={dragStart}
           />
         ))}
       </>

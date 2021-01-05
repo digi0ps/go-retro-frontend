@@ -31,8 +31,12 @@ export class Board extends React.Component {
     this.props.editColumn(editedColumnName, id)
   }
 
+  // CURRYING 
+  handleDeleteCard = (colId, cardId) => s() =>
+    this.props.deleteCard(colId, cardId)
+
   render() {
-    const { columns, addCard, deleteCard, editCard } = this.props
+    const { columns, addCard, editCard } = this.props
 
     return (
       <div>
@@ -54,7 +58,7 @@ export class Board extends React.Component {
             deleteColumnEvent={this.handleDeleteColumnBtn}
             updateColumnEvent={this.handleEditColumnBtn}
             addCardAction={addCard}
-            deleteCardAction={deleteCard}
+            deleteCardAction={this.handleDeleteCard}
             editCardAction={editCard}
           />
         </div>

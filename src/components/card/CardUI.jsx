@@ -14,22 +14,19 @@ class CardUI extends React.Component {
     this.setState({ editedText: e.target.value })
   }
 
+  handleOnDragStart = e => {
+    e.dataTransfer.setData('colId', this.props.colId)
+    e.dataTransfer.setData('cardId', this.props.cardData.id)
+  }
+
   render() {
-    const {
-      cardData,
-      deleteCardEvent,
-      editCardEvent,
-      colId,
-      dragStart,
-    } = this.props
+    const { cardData, deleteCardEvent, editCardEvent, colId } = this.props
     return (
       <div
         className="card"
         draggable
         key={cardData.id}
-        onDragStart={e => {
-          dragStart(e, cardData.id, colId)
-        }}
+        onDragStart={this.handleOnDragStart}
         data-card-id={cardData.id}
         data-col-id={colId}
         data-card-content={cardData.content}
@@ -65,7 +62,8 @@ class CardUI extends React.Component {
             data-card-content={cardData.content}
           >
             <li>{cardData.content}</li>
-            <button onClick={() => deleteCardEvent(cardData.id)}>
+            // CURRYING called here
+            <button onClick={deleteCardEvent(colId, cardData.id)}>
               Delete Card
             </button>
             <button onClick={() => this.handleEditCardBtn(cardData.id)}>
