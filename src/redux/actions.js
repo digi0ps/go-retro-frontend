@@ -50,3 +50,18 @@ export const editCards = (colId, cardId, editedCard) => ({
     editedCard,
   },
 })
+
+export const dropCard = (
+  prevCardId,
+  prevColId,
+  currentCardId,
+  currentColId,
+) => ({
+  type: at.DROP_CARD,
+  payload: {
+    prevCardId,
+    prevColId,
+    currentCardId,
+    currentColId,
+  },
+})
