@@ -22,24 +22,13 @@ class Column extends React.Component {
 
   handleOnDrop = e => {
     e.preventDefault()
-    // const { colId, cardId, cardContent } = e.target.dataset
-    const currentColId = this.props.data.id
-    console.log(
-      `Move  ${e.dataTransfer.getData(
-        'prevCardId',
-      )} from  ${e.dataTransfer.getData(
-        'prevColId',
-      )} to  ${currentColId} and the previous card content is :${e.dataTransfer.getData(
-        'prevCardContent',
-      )}`,
-    )
-    // prevCardId, prevColId, currentColId
-    const prevCardId = e.dataTransfer.getData('prevCardId')
-    const prevColId = e.dataTransfer.getData('prevColId')
-    const prevCardContent = e.dataTransfer.getData('prevCardContent')
 
+    // prevCardId, prevColId, currentColId
+    const cardId = e.dataTransfer.getData('prevCardId')
+    const prevColId = e.dataTransfer.getData('prevColId')
+    const cardContent = e.dataTransfer.getData('prevCardContent')
     const currentColId = this.props.data.id
-    this.props.dropCardAction()
+    this.props.dropCardAction(cardId, prevColId, currentColId, cardContent)
   }
 
   render() {

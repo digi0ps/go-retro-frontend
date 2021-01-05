@@ -149,9 +149,49 @@ const cardAfterEdit = (state, { colId, cardId, editedCard }) => {
   }
 }
 
-const droppedCard = (state, { prevCardId, prevColId, currentColId }) => {
+const createDroppedCard = (id, content) => ({
+  id: id,
+  content: content,
+})
+
+const droppedCard = (
+  state,
+  { cardId, prevColId, currentColId, cardContent },
+) => {
   console.log('from droppedCard()')
-  return state
+  const mutableColumns = [...state.columns]
+  const newPrevCols = mutableColumns.map(col => {
+    if (col.id === prevColId) {
+      const mutableCards = [...col.cards]
+      const newPrevCards = deleteCards(mutableCards, cardId)
+      col.cards = newPrevCards
+    }
+    return col
+  })
+
+  const newCurrentCols = mutableColumns.map(col => {
+    if (col.id === currentColId) {
+      const newDroppedCards = createDroppedCard(cardId, cardContent)
+      const mutableCards = [...col.cards]
+      mutableCards.push(newDroppedCards)
+      col.cards = mutableCards
+    }
+    return col
+  })
+
+  console.log(newCurrentCols)
+  const updatedCols = {
+    ...newPrevCols,
+    ...newCurrentCols,
+  }
+
+  const newColsAfterDragAndDrop = Object.values(updatedCols)
+  console.log(newColsAfterDragAndDrop)
+
+  return {
+    ...state,
+    columns: newColsAfterDragAndDrop,
+  }
 }
 
 export default function boardReducer(state = initialState, action) {
