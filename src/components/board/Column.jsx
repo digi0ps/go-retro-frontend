@@ -25,10 +25,21 @@ class Column extends React.Component {
     // const { colId, cardId, cardContent } = e.target.dataset
     const currentColId = this.props.data.id
     console.log(
-      `Move  ${e.dataTransfer.getData('cardId')} from  ${e.dataTransfer.getData(
-        'colId',
-      )} to  ${currentColId}`,
+      `Move  ${e.dataTransfer.getData(
+        'prevCardId',
+      )} from  ${e.dataTransfer.getData(
+        'prevColId',
+      )} to  ${currentColId} and the previous card content is :${e.dataTransfer.getData(
+        'prevCardContent',
+      )}`,
     )
+    // prevCardId, prevColId, currentColId
+    const prevCardId = e.dataTransfer.getData('prevCardId')
+    const prevColId = e.dataTransfer.getData('prevColId')
+    const prevCardContent = e.dataTransfer.getData('prevCardContent')
+
+    const currentColId = this.props.data.id
+    this.props.dropCardAction()
   }
 
   render() {
@@ -39,6 +50,7 @@ class Column extends React.Component {
       addCardAction,
       deleteCardAction,
       editCardAction,
+      dropCardAction,
     } = this.props
     return (
       <div
@@ -77,6 +89,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
+              dropCardAction={dropCardAction}
             />
             <br />
           </div>
@@ -95,6 +108,7 @@ class Column extends React.Component {
               colId={data.id}
               deleteCardAction={deleteCardAction}
               editCardAction={editCardAction}
+              dropCardAction={dropCardAction}
             />
             <br />
           </div>

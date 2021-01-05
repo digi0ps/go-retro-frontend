@@ -10,6 +10,7 @@ class Presenter extends React.Component {
       addCardAction,
       deleteCardAction,
       editCardAction,
+      dropCardAction,
     } = this.props
     if (columns === undefined) {
       return ''
@@ -23,6 +24,7 @@ class Presenter extends React.Component {
           addCardAction={addCardAction}
           deleteCardAction={deleteCardAction}
           editCardAction={editCardAction}
+          dropCardAction={dropCardAction}
         />
 
         <br />

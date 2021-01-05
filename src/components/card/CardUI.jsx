@@ -15,8 +15,9 @@ class CardUI extends React.Component {
   }
 
   handleOnDragStart = e => {
-    e.dataTransfer.setData('colId', this.props.colId)
-    e.dataTransfer.setData('cardId', this.props.cardData.id)
+    e.dataTransfer.setData('prevColId', this.props.colId)
+    e.dataTransfer.setData('prevCardId', this.props.cardData.id)
+    e.dataTransfer.setData('prevCardContent', this.props.cardData.content)
   }
 
   render() {
@@ -27,9 +28,6 @@ class CardUI extends React.Component {
         draggable
         key={cardData.id}
         onDragStart={this.handleOnDragStart}
-        data-card-id={cardData.id}
-        data-col-id={colId}
-        data-card-content={cardData.content}
       >
         {this.state.editState ? (
           <div>

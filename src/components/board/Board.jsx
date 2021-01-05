@@ -37,7 +37,7 @@ export class Board extends React.Component {
   }
 
   render() {
-    const { columns, addCard, editCard } = this.props
+    const { columns, addCard, editCard, dropCard } = this.props
 
     return (
       <div>
@@ -60,6 +60,7 @@ export class Board extends React.Component {
             addCardAction={addCard}
             deleteCardAction={this.handleDeleteCard}
             editCardAction={editCard}
+            dropCardAction={dropCard}
           />
         </div>
       </div>
@@ -78,6 +79,7 @@ const mapDispatchToProps = {
   addCard: actions.addCards,
   deleteCard: actions.deleteCards,
   editCard: actions.editCards,
+  dropCard: actions.dropCard,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

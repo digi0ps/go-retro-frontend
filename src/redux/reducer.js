@@ -149,6 +149,11 @@ const cardAfterEdit = (state, { colId, cardId, editedCard }) => {
   }
 }
 
+const droppedCard = (state, { prevCardId, prevColId, currentColId }) => {
+  console.log('from droppedCard()')
+  return state
+}
+
 export default function boardReducer(state = initialState, action) {
   console.log('EXECUTING ACTION', action.type, action.payload)
   switch (action.type) {
@@ -169,6 +174,9 @@ export default function boardReducer(state = initialState, action) {
     }
     case at.UPDATE_CARD: {
       return cardAfterEdit(state, action.payload)
+    }
+    case at.DROP_CARD: {
+      return droppedCard(state, action.payload)
     }
     default: {
       return state
