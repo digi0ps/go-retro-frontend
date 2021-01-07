@@ -74,7 +74,7 @@ const editColumn = (state, { editedText, id }) => {
 }
 
 const createCard = cardInp => ({
-  id: new Date().getTime(),
+  id: new Date().getTime().toString(),
   content: cardInp,
 })
 
@@ -100,6 +100,7 @@ const deleteCards = (cards, cardId) => {
   const filteredCards = mutableCards.filter(card => {
     return card.id !== cardId
   })
+  console.log(filteredCards)
   return filteredCards
 }
 
@@ -158,12 +159,12 @@ const droppedCard = (
   state,
   { cardId, prevColId, currentColId, cardContent },
 ) => {
-  console.log('from droppedCard()')
   const mutableColumns = [...state.columns]
   const newPrevCols = mutableColumns.map(col => {
     if (col.id === prevColId) {
       const mutableCards = [...col.cards]
       const newPrevCards = deleteCards(mutableCards, cardId)
+      console.log(newPrevCards)
       col.cards = newPrevCards
     }
     return col
@@ -179,14 +180,14 @@ const droppedCard = (
     return col
   })
 
-  console.log(newCurrentCols)
+  // console.log(newCurrentCols)
   const updatedCols = {
     ...newPrevCols,
     ...newCurrentCols,
   }
 
   const newColsAfterDragAndDrop = Object.values(updatedCols)
-  console.log(newColsAfterDragAndDrop)
+  // console.log(newColsAfterDragAndDrop)
 
   return {
     ...state,
