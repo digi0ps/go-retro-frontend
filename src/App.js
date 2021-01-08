@@ -3,6 +3,7 @@ import Modal from './Modal'
 import './Modal.css'
 import { navigate } from '@reach/router'
 import putData from './api'
+import './css/button.css'
 
 class App extends React.Component {
   state = {
@@ -33,11 +34,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Go Retro</h1>
-        <button onClick={this.handleShow} disabled>
-          join
-        </button>
-        <button onClick={this.handleShow}>Create</button>
+        <h1 className="text-5xl font-bold  text-center text-green-700 tracking-wide">
+          Go Retro
+        </h1>
+        <div className="max-w-sm mx-auto mt-10 flex justify-around ">
+          <button
+            className="btn gd-green-blue"
+            onClick={this.handleShow}
+            disabled
+          >
+            Join
+          </button>
+          <button className="btn gd-blue-red" onClick={this.handleShow}>
+            Create
+          </button>
+        </div>
+
         {this.state.showModal ? (
           <Modal>
             <div className="modal">

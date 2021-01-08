@@ -1,0 +1,11 @@
+.btn {
+  @apply py-2 px-4 font-semibold rounded-lg shadow-md text-white;
+}
+
+.gd-blue-red {
+  @apply bg-gradient-to-r from-blue-500 to-red-500;
+}
+
+.gd-green-blue {
+  @apply bg-gradient-to-r from-green-400 to-blue-500;
+}
