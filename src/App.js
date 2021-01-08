@@ -33,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Go Retro</h1>
+        <h1 className="p-8">Go Retro</h1>
         <button onClick={this.handleShow} disabled>
           join
         </button>
