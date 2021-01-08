@@ -1,0 +1,20 @@
+.board {
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  min-height: 80vh;
+  border: 1px #222 solid;
+  margin-left: 2rem;
+  padding: 5px 15px;
+}
+
+.card {
+  padding: 5px;
+  background-color: #dadada;
+  cursor: grab;
+  margin-top: 1rem;
+  box-shadow: #cad1c7 0px 7px 12px;
+}

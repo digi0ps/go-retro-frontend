@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from './Modal'
-import './App.css'
 import './Modal.css'
 import { navigate } from '@reach/router'
 import putData from './api'
