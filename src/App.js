@@ -32,12 +32,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="p-8">Go Retro</h1>
-        <button onClick={this.handleShow} disabled>
-          join
+      <div className="font-sans">
+        <h1 className="font-mono text-lg">Go Retro</h1>
+        <button
+          onClick={this.handleShow}
+          disabled={true}
+          className="bg-gray-200 px-4 py-1 mx-2 rounded-md text-gray-400 text-md tracking-wide font-medium cursor-not-allowed"
+        >
+          Join
         </button>
-        <button onClick={this.handleShow}>Create</button>
+        <button
+          onClick={this.handleShow}
+          className="bg-green-400 bg-opacity-80 px-4 py-1 mx-2 rounded-md text-white text-md hover:bg-green-500 tracking-wide  font-medium"
+        >
+          Create
+        </button>
         {this.state.showModal ? (
           <Modal>
             <div className="modal">
