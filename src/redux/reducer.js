@@ -28,7 +28,7 @@ const initialState = {
 /* action */
 
 const createColumn = name => ({
-  id: new Date().getTime(),
+  id: new Date().getTime().toString(),
   name,
   cards: [],
 })
