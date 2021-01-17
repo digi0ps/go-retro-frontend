@@ -3,6 +3,7 @@ import Modal from './Modal'
 import './Modal.css'
 import { navigate } from '@reach/router'
 import putData from './api'
+import join from './assets/join.svg'
 
 class App extends React.Component {
   state = {
@@ -32,21 +33,55 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="font-sans">
-        <h1 className="font-mono text-lg">Go Retro</h1>
-        <button
-          onClick={this.handleShow}
-          disabled={true}
-          className="bg-gray-200 px-4 py-1 mx-2 rounded-md text-gray-400 text-md tracking-wide font-medium cursor-not-allowed"
-        >
-          Join
-        </button>
-        <button
-          onClick={this.handleShow}
-          className="bg-green-400 bg-opacity-80 px-4 py-1 mx-2 rounded-md text-white text-md hover:bg-green-500 tracking-wide  font-medium"
-        >
-          Create
-        </button>
+      <div className="h-screen bg-gray-300 font-sans">
+        <h1 className="text-2xl text-center py-8">Go Retro</h1>
+
+        <img
+          src={join}
+          alt="illustration"
+          className="max-w-sm w-80 m-auto h-32 px-8 sm:max-w-md sm:w-auto sm:h-auto"
+        />
+        <div className="text-center my-4">
+          <p className="uppercase font-mono py-2">Anonymous Task Board</p>
+          <div className="max-w-xl m-auto px-4 text-justify">
+            <ul className="list-outside p-4 sm:py-2">
+              <li className="list-disc py-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </li>
+              <li className="list-disc py-3">
+                Quam pellentesque nec nam aliquam sem et. Sem integer vitae
+                justo eget magna fermentum iaculis.
+              </li>
+            </ul>
+          </div>
+          <div className="py-6 sm:py-6">
+            <button
+              onClick={this.handleShow}
+              disabled={true}
+              className="bg-gray-200 px-3 py-1 mx-2 rounded-md text-gray-400 text-md tracking-wide font-medium cursor-not-allowed"
+            >
+              Join Board
+            </button>
+            <button
+              onClick={this.handleShow}
+              className="px-3 py-1 mx-2 rounded-md text-md hover:bg-green-500 tracking-wide font-medium"
+            >
+              Create Board
+            </button>
+          </div>
+          <p className="absolute py-4 bottom-0 left-0 right-0">
+            Made by{' '}
+            <a className="hover:underline" href="https://github.com/rohit1101">
+              rohit1101
+            </a>{' '}
+            &{' '}
+            <a className="hover:underline" href="https://github.com/digi0ps">
+              digi0ps
+            </a>{' '}
+            !
+          </p>
+        </div>
         {this.state.showModal ? (
           <Modal>
             <div className="modal">
